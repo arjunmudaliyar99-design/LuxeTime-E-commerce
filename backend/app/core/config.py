@@ -57,6 +57,13 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = False
         extra = "ignore"  # Ignore extra fields in .env file
+        
+        # Map environment variable names
+        fields = {
+            'cors_origins': {'env': ['CORS_ORIGINS', 'cors_origins']},
+            'debug': {'env': ['DEBUG', 'debug']},
+            'secret_key': {'env': ['SECRET_KEY', 'secret_key']},
+        }
 
 
 @lru_cache()
