@@ -1,2 +1,28 @@
-build_command = "pip install -r requirements.txt"
-start_command = "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+services:
+  - type: web
+    name: luxetime-backend
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: False
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_EMAIL
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
