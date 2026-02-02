@@ -1,0 +1,544 @@
+/* Home Page Container */
+.home-page {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg-primary);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(201, 160, 95, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: var(--z-base);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: center;
+  padding: var(--space-3xl) var(--space-lg);
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.hero-description {
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* Hero Image */
+.hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watch-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid rgba(201, 160, 95, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201, 160, 95, 0.1);
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(30, 30, 30, 0.8) 100%);
+}
+
+.hero-watch-video {
+  width: 400%;
+  height: 200%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  filter: drop-shadow(0 20px 60px rgba(201, 160, 95, 0.4));
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  visibility: visible !important;
+  background: #000;
+}
+
+.watch-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(201, 160, 95, 0.2) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Features Section */
+.features-section {
+  background-color: var(--bg-secondary);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-3xl);
+}
+
+.feature-card {
+  padding: var(--space-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-accent);
+}
+
+.feature-card h3 {
+  margin-top: var(--space-sm);
+}
+
+.feature-card p {
+  max-width: 300px;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, rgba(201, 160, 95, 0.05) 0%, transparent 100%);
+}
+
+.cta-card {
+  text-align: center;
+  padding: var(--space-3xl);
+  background: linear-gradient(145deg, rgba(15, 15, 15, 0.9) 0%, rgba(25, 25, 25, 0.9) 100%);
+  border: 2px solid rgba(201, 160, 95, 0.2);
+  box-shadow: 0 12px 48px rgba(201, 160, 95, 0.1);
+}
+
+/* Featured Watches Section */
+.featured-watches-section {
+  background: var(--bg-secondary);
+  padding: var(--space-3xl) 0;
+}
+
+/* New Arrivals Banner Section */
+.new-arrivals-section {
+  background: var(--bg-primary);
+  padding: var(--space-3xl) 0;
+}
+
+/* Slider Container */
+.slider-container {
+  position: relative;
+  margin-top: var(--space-2xl);
+  padding: 0 60px;
+}
+
+.arrivals-slider-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.featured-slider-wrapper {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.arrivals-banner-grid {
+  display: flex;
+  gap: var(--space-lg);
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.arrivals-banner-grid > * {
+  flex: 0 0 calc(25% - var(--space-lg) * 0.75);
+  min-width: calc(25% - var(--space-lg) * 0.75);
+}
+
+.arrival-banner-card {
+  position: relative;
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  transition: all var(--transition-base);
+}
+
+.arrival-banner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(201, 160, 95, 0.3);
+}
+
+.arrival-banner-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
+  border: 2px solid rgba(201, 160, 95, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.arrival-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-xl);
+  transition: transform var(--transition-slow);
+  background: transparent;
+}
+
+.arrival-banner-card:hover .arrival-banner-image img {
+  transform: scale(1.1);
+}
+
+.arrival-banner-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-xl);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  transform: translateY(0);
+  transition: transform var(--transition-base);
+}
+
+.arrival-banner-card:hover .arrival-banner-overlay {
+  transform: translateY(-8px);
+}
+
+.arrival-brand {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.arrival-name {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+  line-height: 1.2;
+}
+
+.arrival-price {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--accent-primary);
+  margin-top: var(--space-xs);
+}
+
+/* Slider Controls */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(201, 160, 95, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.slider-btn:hover {
+  background: rgba(201, 160, 95, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(201, 160, 95, 0.4);
+}
+
+.slider-btn-prev {
+  left: 0;
+}
+
+.slider-btn-next {
+  right: 0;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: var(--space-xl);
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.slider-dot.active {
+  background: var(--accent-primary);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(201, 160, 95, 0.6);
+}
+
+.slider-dot:hover {
+  background: rgba(201, 160, 95, 0.5);
+}
+
+.featured-watches-grid {
+  display: flex;
+  gap: var(--space-lg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.featured-watches-grid > * {
+  flex: 0 0 calc(33.333% - var(--space-lg) * 0.667);
+  min-width: calc(33.333% - var(--space-lg) * 0.667);
+}
+
+.featured-watch-card {
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(145deg, rgba(15, 15, 15, 0.95) 0%, rgba(25, 25, 25, 0.95) 100%);
+  border: 2px solid rgba(201, 160, 95, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.featured-watch-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(201, 160, 95, 0.5);
+  box-shadow: 0 20px 60px rgba(201, 160, 95, 0.2), 0 0 0 1px rgba(201, 160, 95, 0.15);
+}
+
+.featured-watch-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.featured-watch-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-xl);
+  transition: transform var(--transition-slow);
+  background: transparent;
+}
+
+.featured-watch-card:hover .featured-watch-image {
+  transform: scale(1.1);
+}
+
+.featured-watch-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201, 160, 95, 0.9) 0%, rgba(150, 120, 70, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.featured-watch-card:hover .featured-watch-overlay {
+  opacity: 1;
+}
+
+.try-on-text {
+  color: white;
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.featured-watch-info {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.featured-watch-name {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.featured-watch-price {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--accent-primary);
+}
+
+.featured-watches-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-2xl);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    text-align: center;
+  }
+  
+  .hero-text {
+    align-items: center;
+  }
+  
+  .hero-description {
+    max-width: 100%;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+  }
+  
+  .hero-content {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-actions .btn {
+    width: 100%;
+  }
+  
+  .watch-showcase {
+    max-width: 300px;
+  }
+  
+  .featured-watches-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .arrivals-banner-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  
+  .cta-card {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .featured-watches-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arrivals-banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

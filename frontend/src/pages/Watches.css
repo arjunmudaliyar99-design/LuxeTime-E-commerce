@@ -1,0 +1,204 @@
+.watches-page {
+  min-height: 100vh;
+  padding: var(--space-3xl) 0;
+  background-color: var(--bg-primary);
+}
+
+.watches-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.watches-header p {
+  margin-top: var(--space-md);
+}
+
+/* Loading and Error States */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-lg);
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-subtle);
+  border-top-color: var(--accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  padding: var(--space-xl);
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: var(--radius-md);
+  color: #fca5a5;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.error-message button {
+  margin-top: var(--space-md);
+}
+
+.watches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* Watch Card */
+.watch-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all var(--transition-base);
+  background: linear-gradient(145deg, rgba(15, 15, 15, 0.95) 0%, rgba(25, 25, 25, 0.95) 100%);
+  border: 1px solid rgba(201, 160, 95, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201, 160, 95, 0.05);
+  position: relative;
+}
+
+.watch-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201, 160, 95, 0.5), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.watch-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(201, 160, 95, 0.5);
+  box-shadow: 0 20px 60px rgba(201, 160, 95, 0.2), 0 0 0 1px rgba(201, 160, 95, 0.15);
+}
+
+.watch-card:hover::before {
+  opacity: 1;
+}
+
+.watch-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.watch-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.watch-card:hover .watch-image {
+  transform: scale(1.05);
+}
+
+.watch-image-placeholder {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Watch Details */
+.watch-details {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
+}
+
+.watch-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.watch-brand {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.watch-name {
+  margin: 0;
+}
+
+.watch-description {
+  line-height: 1.6;
+  min-height: 2.4em;
+}
+
+.watch-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.watch-price {
+  margin: 0;
+}
+
+.watch-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.watch-actions .btn {
+  flex: 1;
+}
+
+.btn-small {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-sm);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .watches-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .watches-page {
+    padding: var(--space-xl) 0;
+  }
+  
+  .watches-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .watch-actions {
+    flex-direction: column;
+  }
+  
+  .watch-actions .btn {
+    width: 100%;
+  }
+}
