@@ -30,6 +30,13 @@ class Settings(BaseSettings):
             return [origin.strip() for origin in v.split(',') if origin.strip()]
         return v
     
+    @field_validator('debug', mode='before')
+    @classmethod
+    def parse_debug(cls, v):
+        if isinstance(v, str):
+            return v.lower() in ('true', '1', 'yes')
+        return v
+    
     # Server
     host: str = "0.0.0.0"
     port: int = 8000
@@ -57,13 +64,6 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = False
         extra = "ignore"  # Ignore extra fields in .env file
-        
-        # Map environment variable names
-        fields = {
-            'cors_origins': {'env': ['CORS_ORIGINS', 'cors_origins']},
-            'debug': {'env': ['DEBUG', 'debug']},
-            'secret_key': {'env': ['SECRET_KEY', 'secret_key']},
-        }
 
 
 @lru_cache()
