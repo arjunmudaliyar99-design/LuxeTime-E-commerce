@@ -1,0 +1,10 @@
+services:
+  - type: static_site
+    name: luxetime-frontend
+    buildCommand: cd frontend && npm install --legacy-peer-deps && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+      - key: VITE_API_URL
+        value: "https://luxetime-e-commerce.onrender.com"

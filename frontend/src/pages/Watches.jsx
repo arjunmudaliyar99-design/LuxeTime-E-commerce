@@ -16,7 +16,8 @@ function Watches() {
         setLoading(true);
         setError(null);
         
-        const response = await fetch('http://localhost:8000/api/watches/');
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
+        const response = await fetch(`${apiUrl}/api/watches/`);
         
         if (!response.ok) {
           throw new Error('Failed to load watches');
@@ -46,7 +47,8 @@ function Watches() {
       const token = getOrCreateToken();
 
       // Call cart API
-      const response = await fetch('http://localhost:8000/api/cart/add', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
+      const response = await fetch(`${apiUrl}/api/cart/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +101,7 @@ function Watches() {
             <p className="body-large text-secondary">Loading watches...</p>
           </div>
         ) : (
-          <div className="watches-grid">
+          <div className="watches-grid responsive-grid">
             {watches.map((watch) => (
               <div key={watch.id} className="watch-card card">
                 <div className="watch-image-container">
