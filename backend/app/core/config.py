@@ -68,4 +68,10 @@ class Settings(BaseSettings):
 
 @lru_cache()
 def get_settings():
+    # If the environment provides an empty string for CORS_ORIGINS,
+    # pydantic-settings will attempt to json.loads it and raise
+    # JSONDecodeError. Remove the var so the default applies instead.
+    cors_env = os.environ.get('CORS_ORIGINS')
+    if isinstance(cors_env, str) and cors_env.strip() == "":
+        os.environ.pop('CORS_ORIGINS', None)
     return Settings()
