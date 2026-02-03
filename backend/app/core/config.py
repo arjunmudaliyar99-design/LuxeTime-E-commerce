@@ -1,4 +1,5 @@
 import os
+import json
 from functools import lru_cache
 from typing import List
 from pydantic_settings import BaseSettings
@@ -24,10 +25,23 @@ class Settings(BaseSettings):
     @classmethod
     def parse_cors_origins(cls, v):
         if isinstance(v, str):
-            # Handle comma-separated string or wildcard
-            if v == "*":
+            s = v.strip()
+            # Empty string -> return default local origins
+            if s == "":
+                return ["http://localhost:3000", "http://localhost:5173"]
+            # Wildcard
+            if s == "*":
                 return ["*"]
-            return [origin.strip() for origin in v.split(',') if origin.strip()]
+            # JSON array
+            if s.startswith('['):
+                try:
+                    parsed = json.loads(s)
+                    if isinstance(parsed, list):
+                        return parsed
+                except Exception:
+                    pass
+            # Comma-separated list
+            return [origin.strip() for origin in s.split(',') if origin.strip()]
         return v
     
     @field_validator('debug', mode='before')
