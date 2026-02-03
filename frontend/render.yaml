@@ -1,0 +1,8 @@
+services:
+  - type: static_site
+    name: luxetime-frontend
+    buildCommand: npm install --legacy-peer-deps && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
