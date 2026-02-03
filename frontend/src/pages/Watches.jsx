@@ -16,7 +16,8 @@ function Watches() {
         setLoading(true);
         setError(null);
         
-        const response = await fetch('http://localhost:8000/api/watches/');
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const response = await fetch(`${apiUrl}/api/watches/`);
         
         if (!response.ok) {
           throw new Error('Failed to load watches');
@@ -46,7 +47,8 @@ function Watches() {
       const token = getOrCreateToken();
 
       // Call cart API
-      const response = await fetch('http://localhost:8000/api/cart/add', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/api/cart/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
