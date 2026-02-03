@@ -1,6 +1,7 @@
 services:
   - type: static_site
     name: luxetime-frontend
+    rootDir: frontend
     buildCommand: npm install --legacy-peer-deps && npm run build
     staticPublishPath: dist
     envVars:
