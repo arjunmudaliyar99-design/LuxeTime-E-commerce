@@ -13,6 +13,7 @@ function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
   const [submitMessage, setSubmitMessage] = useState('');
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
 
   // Form validation
   const validateForm = () => {
@@ -78,7 +79,7 @@ function Contact() {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch('http://localhost:8000/api/contact', {
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

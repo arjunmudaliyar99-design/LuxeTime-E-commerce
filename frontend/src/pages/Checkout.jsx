@@ -20,6 +20,7 @@ function Checkout() {
     cardExpiry: '',
     cardCVV: ''
   });
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
 
   // Fetch cart items
   useEffect(() => {
@@ -27,7 +28,7 @@ function Checkout() {
       try {
         const token = getOrCreateToken();
 
-        const response = await fetch('http://localhost:8000/api/cart/', {
+        const response = await fetch(`${apiUrl}/api/cart/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -38,7 +39,7 @@ function Checkout() {
           
           if (data.items && data.items.length > 0) {
             // Fetch watch details for each item
-            const watchesRes = await fetch('http://localhost:8000/api/watches/');
+            const watchesRes = await fetch(`${apiUrl}/api/watches/`);
             const watchesData = await watchesRes.json();
             const watchesMap = {};
             

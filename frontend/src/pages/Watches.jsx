@@ -16,7 +16,7 @@ function Watches() {
         setLoading(true);
         setError(null);
         
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+        const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
         const response = await fetch(`${apiUrl}/api/watches/`);
         
         if (!response.ok) {
@@ -47,7 +47,7 @@ function Watches() {
       const token = getOrCreateToken();
 
       // Call cart API
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
       const response = await fetch(`${apiUrl}/api/cart/add`, {
         method: 'POST',
         headers: {
@@ -101,7 +101,7 @@ function Watches() {
             <p className="body-large text-secondary">Loading watches...</p>
           </div>
         ) : (
-          <div className="watches-grid">
+          <div className="watches-grid responsive-grid">
             {watches.map((watch) => (
               <div key={watch.id} className="watch-card card">
                 <div className="watch-image-container">
