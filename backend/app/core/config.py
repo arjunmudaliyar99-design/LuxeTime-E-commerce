@@ -1,6 +1,6 @@
 import os
 from functools import lru_cache
-from typing import List
+from typing import List, Union
 from pydantic_settings import BaseSettings
 from pydantic import field_validator
 
@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     supabase_jwt_secret: str = ""  # Set via SUPABASE_JWT_SECRET env var
     
     # CORS
-    cors_origins: List[str] = ["http://localhost:3000", "http://localhost:5173"]
+    cors_origins: Union[str, List[str]] = ["http://localhost:3000", "http://localhost:5173"]
     
     @field_validator('cors_origins', mode='before')
     @classmethod
@@ -39,8 +39,8 @@ class Settings(BaseSettings):
     
     # Server
     host: str = "0.0.0.0"
-    port: int = 8000
-    environment: str = "development"
+    port: int = 8000 
+    environment: str = "development" 
     
     # Database (for future use)
     database_url: str = "sqlite:///./watches.db"
