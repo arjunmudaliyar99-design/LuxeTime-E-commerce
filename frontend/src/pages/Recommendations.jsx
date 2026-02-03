@@ -38,7 +38,8 @@ function Recommendations() {
 
       console.log('Sending recommendation request:', requestBody);
 
-      const response = await fetch('http://localhost:8000/api/recommendations/recommend', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
+      const response = await fetch(`${apiUrl}/api/recommendations/recommend`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

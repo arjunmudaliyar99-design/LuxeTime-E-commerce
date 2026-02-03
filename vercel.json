@@ -1,11 +1,11 @@
 {
+  "version": 2,
   "buildCommand": "cd frontend && npm install --legacy-peer-deps && npm run build",
   "outputDirectory": "frontend/dist",
-  "devCommand": "cd frontend && npm run dev",
-  "installCommand": "cd frontend && npm install --legacy-peer-deps",
-  "framework": "vite",
   "env": {
     "NODE_VERSION": "18"
   },
-  "public": true
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }

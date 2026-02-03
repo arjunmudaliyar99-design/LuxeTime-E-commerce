@@ -8,6 +8,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://luxetime-e-commerce.onrender.com';
 
   // Fetch cart from backend
   useEffect(() => {
@@ -18,7 +19,7 @@ function Cart() {
         
         const token = getOrCreateToken();
 
-        const response = await fetch('http://localhost:8000/api/cart/', {
+        const response = await fetch(`${apiUrl}/api/cart/`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -44,7 +45,7 @@ function Cart() {
         
         if (items.length > 0) {
           // Fetch all watches first
-          const watchesRes = await fetch('http://localhost:8000/api/watches/');
+          const watchesRes = await fetch(`${apiUrl}/api/watches/`);
           const watchesData = await watchesRes.json();
           const watchesMap = {};
           
@@ -81,7 +82,7 @@ function Cart() {
     try {
       const token = localStorage.getItem('auth_token');
       
-      const response = await fetch('http://localhost:8000/api/cart/update', {
+      const response = await fetch(`${apiUrl}/api/cart/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +110,7 @@ function Cart() {
     try {
       const token = localStorage.getItem('auth_token');
       
-      const response = await fetch(`http://localhost:8000/api/cart/remove/${watchId}`, {
+      const response = await fetch(`${apiUrl}/api/cart/remove/${watchId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
