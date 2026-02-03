@@ -1,20 +1,28 @@
-  /* Luxury Navigation Bar */
+/* ====================================
+   LUXETIME - MOBILE-FIRST NAVBAR
+   Premium Bottom Navigation for Mobile
+   ==================================== */
+
+/* Desktop Top Navbar */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(26, 26, 26, 0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(201, 160, 95, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: none;
 }
 
 .navbar.scrolled {
-  background: rgba(26, 26, 26, 0.98);
-  backdrop-filter: blur(30px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(11, 11, 11, 0.95);
+  backdrop-filter: blur(32px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-bottom-color: rgba(212, 175, 55, 0.15);
 }
 
 .navbar-content {
@@ -23,54 +31,41 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 2.5rem;
+  padding: 1rem 2rem;
   gap: 2rem;
 }
 
-/* Brand */
+/* Brand - Simplified for Mobile */
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;
   text-decoration: none;
   transition: all 0.3s ease;
   z-index: 1001;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar-brand:hover .brand-icon {
   transform: rotate(180deg);
 }
 
-.brand-icon {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.navbar-brand:hover .brand-icon svg {
-  animation: rotate 20s linear infinite;
-}
-
 .brand-text-group {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
 .brand-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #C9A05F 0%, #FFD782 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -79,9 +74,9 @@
 
 .brand-accent {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   letter-spacing: 0.05em;
 }
 
@@ -377,60 +372,190 @@
   margin: 1rem 0;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-  .navbar-content {
-    padding: 1rem 1.5rem;
+/* ====================================
+   MOBILE BOTTOM NAVIGATION
+   Native App-like Experience
+   ==================================== */
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(11, 11, 11, 0.95);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 0.5rem 0 calc(0.5rem + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  flex: 1;
+  padding: 0.5rem 0.25rem;
+  text-decoration: none;
+  color: #BFBFBF;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  max-width: 100px;
+}
+
+.mobile-nav-item:active {
+  transform: scale(0.92);
+}
+
+.mobile-nav-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mobile-nav-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.8;
+}
+
+.mobile-nav-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-item.active {
+  color: #D4AF37;
+}
+
+.mobile-nav-item.active .mobile-nav-icon {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+}
+
+.mobile-nav-item.active .mobile-nav-label {
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.mobile-nav-item::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  border-radius: 0 0 3px 3px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-item.active::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Cart Badge on Mobile Nav */
+.mobile-nav-item .cart-badge {
+  position: absolute;
+  top: -2px;
+  right: 20%;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+  color: #000000;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.5);
+  border: 1.5px solid #0B0B0B;
+}
+
+/* Desktop Navigation Styles */
+@media (min-width: 769px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  .navbar {
+    display: flex;
   }
 
   .navbar-links {
-    display: none;
+    display: flex;
   }
 
-  .navbar-actions .nav-icon:not(:last-child) {
-    display: none;
+  .navbar-actions {
+    display: flex;
   }
 
-  .navbar-actions .btn-nav {
+  .mobile-menu-toggle {
     display: none;
+  }
+}
+
+/* Mobile: Hide Desktop Nav, Show Bottom Nav */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    background: rgba(11, 11, 11, 0.9);
+    padding: 0;
+  }
+
+  .navbar-content {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-links {
+    display: none !important;
+  }
+
+  .navbar-actions {
+    display: none !important;
   }
 
   .mobile-menu-toggle {
     display: flex;
   }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .home-page {
+    padding-top: 60px;
+  }
 }
 
-@media (max-width: 576px) {
-  .navbar-content {
-    padding: 0.875rem 1rem;
-    gap: 1rem;
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .mobile-nav-label {
+    font-size: 0.6rem;
   }
 
-  .brand-text, .brand-accent {
-    font-size: 1.25rem;
+  .mobile-nav-icon {
+    width: 22px;
+    height: 22px;
   }
 
-  .brand-icon {
-    width: 32px;
-    height: 32px;
-  }
-
-  .brand-text-group {
-    gap: 0.15rem;
-  }
-
-  .mobile-menu {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .mobile-menu-content {
-    padding: 5rem 1.5rem 2rem;
-  }
-
-  .mobile-nav-link {
-    font-size: 1rem;
-    padding: 1rem 0.75rem;
+  .mobile-bottom-nav {
+    padding: 0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom));
   }
 }
 /* Luxury Navigation Bar */
