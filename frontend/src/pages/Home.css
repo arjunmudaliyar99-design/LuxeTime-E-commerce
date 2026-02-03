@@ -273,11 +273,24 @@
   }
 }
 
-=======
->>>>>>> a9e5bef17367e2c1973a189e22437cdc51604628
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%, 100% { 
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(201, 160, 95, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(201, 160, 95, 0.4), 0 0 60px rgba(201, 160, 95, 0.2);
+  }
 }
 
 /* Sections */
@@ -478,25 +491,149 @@
   }
 }
 
-.feature-card h3 {
-  margin-top: var(--space-sm);
+.features-section {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.feature-card p {
-  max-width: 300px;
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 160, 95, 0.5), transparent);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-card {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.9) 0%, rgba(15, 15, 15, 0.9) 100%);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  border: 2px solid rgba(201, 160, 95, 0.1);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(201, 160, 95, 0.05), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(201, 160, 95, 0.4);
+  box-shadow: 0 20px 60px rgba(201, 160, 95, 0.2), 0 0 80px rgba(201, 160, 95, 0.1);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(201, 160, 95, 0.1), rgba(201, 160, 95, 0.05));
+  border-radius: 50%;
+  border: 2px solid rgba(201, 160, 95, 0.2);
+  transition: all 0.4s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(10deg);
+  border-color: rgba(201, 160, 95, 0.6);
+  box-shadow: 0 8px 32px rgba(201, 160, 95, 0.3);
 }
 
 /* CTA Section */
 .cta-section {
-  background: linear-gradient(135deg, rgba(201, 160, 95, 0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(201, 160, 95, 0.08), transparent 60%);
+  pointer-events: none;
 }
 
 .cta-card {
+  position: relative;
   text-align: center;
-  padding: var(--space-3xl);
-  background: linear-gradient(145deg, rgba(15, 15, 15, 0.9) 0%, rgba(25, 25, 25, 0.9) 100%);
-  border: 2px solid rgba(201, 160, 95, 0.2);
-  box-shadow: 0 12px 48px rgba(201, 160, 95, 0.1);
+  padding: 4rem 3rem;
+  background: linear-gradient(145deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+  border: 2px solid rgba(201, 160, 95, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6), 0 0 120px rgba(201, 160, 95, 0.1) inset;
+  max-width: 900px;
+  margin: 0 auto;
+  backdrop-filter: blur(20px);
+}
+
+.cta-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, rgba(201, 160, 95, 0.4), transparent 50%, rgba(201, 160, 95, 0.4));
+  border-radius: 24px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cta-card:hover::before {
+  opacity: 1;
+}
+
+.cta-card h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #fff 0%, #c9a05f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cta-card .btn {
+  margin-top: 2.5rem;
+  padding: 1.25rem 3rem;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 32px rgba(201, 160, 95, 0.3);
+}
+
+.cta-card .btn:hover {
+  box-shadow: 0 12px 48px rgba(201, 160, 95, 0.5);
+  transform: translateY(-4px) scale(1.05);
 }
 
 /* Featured Watches Section */
@@ -558,19 +695,20 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(35, 35, 35, 0.95) 100%);
-  border: 2px solid rgba(201, 160, 95, 0.2);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 2px solid rgba(201, 160, 95, 0.3);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .arrival-banner-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: var(--space-xl);
+  object-fit: cover;
   transition: transform var(--transition-slow);
   background: transparent;
+  display: block;
 }
 
 .arrival-banner-card:hover .arrival-banner-image img {
@@ -712,7 +850,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -722,10 +860,10 @@
 .featured-watch-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: var(--space-xl);
+  object-fit: cover;
   transition: transform var(--transition-slow);
   background: transparent;
+  display: block;
 }
 
 .featured-watch-card:hover .featured-watch-image {
