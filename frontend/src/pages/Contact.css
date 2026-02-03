@@ -2,12 +2,10 @@
 
 .contact-page {
   min-height: 100vh;
-  padding: 80px 0 60px;
-  background: linear-gradient(135deg, 
-    rgba(26, 26, 26, 1) 0%,
-    rgba(45, 45, 45, 1) 50%,
-    rgba(26, 26, 26, 1) 100%
-  );
+  width: 100%;
+  margin-top: 60px;
+  padding: 2rem 1.5rem 3rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
   position: relative;
   overflow: hidden;
 }
@@ -28,7 +26,7 @@
 .contact-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
   position: relative;
   z-index: 1;
 }
@@ -36,17 +34,22 @@
 /* Header */
 .contact-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 2.5rem;
   animation: fadeInDown 0.8s ease-out;
 }
 
 .contact-header h1 {
-  background: linear-gradient(135deg, rgba(201, 160, 95, 1), rgba(255, 215, 130, 1));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 16px;
-  font-size: 48px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.contact-header p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .contact-header p {
